@@ -67,9 +67,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Estilos\EdicionEstilso}.css" />
+    <Content Include="Paginas\EdicionNotas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Paginas\EdicionNotas.aspx.cs">
+      <DependentUpon>EdicionNotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\EdicionNotas.aspx.designer.cs">
+      <DependentUpon>EdicionNotas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,10 +90,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Estilos\" />
-    <Folder Include="Paginas\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="Negocios\Negocios.csproj">
       <Project>{6bb94020-a1b4-497e-a84c-17dd0b24a772}</Project>
