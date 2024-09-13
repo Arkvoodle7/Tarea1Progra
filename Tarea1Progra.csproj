@@ -72,11 +72,15 @@
     <Content Include="Paginas\EdicionNotas.aspx" />
     <Content Include="Paginas\WB_Login.aspx" />
     <Content Include="Paginas\WB_RegistroUsuarios.aspx" />
+    <Content Include="Estilos\EstiloAgrModNotas.css" />
+    <Content Include="Estilos\EstiloDashboard.css" />
+    <Content Include="Paginas\AgregarNotas.aspx" />
+    <Content Include="Paginas\ModificarNotas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Paginas\EdicionNotas.aspx.cs">
-      <DependentUpon>EdicionNotas.aspx</DependentUpon>
+    <Compile Include="Paginas\AgregarNotas.aspx.cs">
+      <DependentUpon>AgregarNotas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Paginas\EdicionNotas.aspx.designer.cs">
@@ -84,15 +88,26 @@
     </Compile>
     <Content Include="Paginas\EstiloEladio.css" />
     <Content Include="Paginas\Menu_Principal.aspx" />
+    <Compile Include="Paginas\AgregarNotas.aspx.designer.cs">
+      <DependentUpon>AgregarNotas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\ModificarNotas.aspx.cs">
+      <DependentUpon>ModificarNotas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\ModificarNotas.aspx.designer.cs">
+      <DependentUpon>ModificarNotas.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Paginas\Dashboard.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Paginas\Menu_Principal.aspx.cs">
-      <DependentUpon>Menu_Principal.aspx</DependentUpon>
+    <Compile Include="Paginas\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\Menu_Principal.aspx.designer.cs">
-      <DependentUpon>Menu_Principal.aspx</DependentUpon>
+    <Compile Include="Paginas\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paginas\WB_Login.aspx.cs">
       <DependentUpon>WB_Login.aspx</DependentUpon>
