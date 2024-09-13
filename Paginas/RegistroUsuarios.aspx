@@ -6,7 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>Registro de usuarios</title>
-    <link href="../Estilos/EstiloLogRed.css" rel="stylesheet" />
+    <link href="../Estilos/EstiloLogReg.css" rel="stylesheet" />
 </head>
 
 <body>
