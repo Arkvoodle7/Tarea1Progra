@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Tarea1Progra.Paginas
 {
-    public partial class WB_RegistroUsuarios : System.Web.UI.Page
+    public partial class RegistroUsuarios : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

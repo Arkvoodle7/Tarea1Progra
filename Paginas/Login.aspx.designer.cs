@@ -11,7 +11,7 @@ namespace Tarea1Progra.Paginas
 {
 
 
-    public partial class WB_Login
+    public partial class Login
     {
 
         /// <summary>
