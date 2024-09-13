@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WB_Login.aspx.cs" Inherits="Tarea1Progra.Paginas.WB_Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Tarea1Progra.Paginas.WB_Login" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Login</title>
-    <link href="../Estilos.css" rel="stylesheet" />
+    <link href="../Estilos/EstiloLogReg.css" rel="stylesheet" />
 </head>
 
 <body>

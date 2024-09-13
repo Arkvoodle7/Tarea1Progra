@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WB_RegistroUsuarios.aspx.cs" Inherits="Tarea1Progra.Paginas.WB_RegistroUsuarios" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegistroUsuarios.aspx.cs" Inherits="Tarea1Progra.Paginas.WB_RegistroUsuarios" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Registro de usuarios</title>
-    <link href="../Estilos.css" rel="stylesheet" />
+    <link href="../Estilos/EstiloLogRed.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">

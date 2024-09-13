@@ -67,11 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Estilos.css" />
-    <Content Include="Estilos\EdicionEstilso}.css" />
-    <Content Include="Paginas\EdicionNotas.aspx" />
-    <Content Include="Paginas\WB_Login.aspx" />
-    <Content Include="Paginas\WB_RegistroUsuarios.aspx" />
+    <Content Include="Estilos\EstiloLogReg.css" />
+    <Content Include="Paginas\Login.aspx" />
+    <Content Include="Paginas\RegistroUsuarios.aspx" />
     <Content Include="Estilos\EstiloAgrModNotas.css" />
     <Content Include="Estilos\EstiloDashboard.css" />
     <Content Include="Paginas\AgregarNotas.aspx" />
@@ -83,11 +81,6 @@
       <DependentUpon>AgregarNotas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\EdicionNotas.aspx.designer.cs">
-      <DependentUpon>EdicionNotas.aspx</DependentUpon>
-    </Compile>
-    <Content Include="Paginas\EstiloEladio.css" />
-    <Content Include="Paginas\Menu_Principal.aspx" />
     <Compile Include="Paginas\AgregarNotas.aspx.designer.cs">
       <DependentUpon>AgregarNotas.aspx</DependentUpon>
     </Compile>
@@ -109,19 +102,19 @@
     <Compile Include="Paginas\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\WB_Login.aspx.cs">
-      <DependentUpon>WB_Login.aspx</DependentUpon>
+    <Compile Include="Paginas\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\WB_Login.aspx.designer.cs">
-      <DependentUpon>WB_Login.aspx</DependentUpon>
+    <Compile Include="Paginas\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Paginas\WB_RegistroUsuarios.aspx.cs">
-      <DependentUpon>WB_RegistroUsuarios.aspx</DependentUpon>
+    <Compile Include="Paginas\RegistroUsuarios.aspx.cs">
+      <DependentUpon>RegistroUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Paginas\WB_RegistroUsuarios.aspx.designer.cs">
-      <DependentUpon>WB_RegistroUsuarios.aspx</DependentUpon>
+    <Compile Include="Paginas\RegistroUsuarios.aspx.designer.cs">
+      <DependentUpon>RegistroUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -16,7 +16,7 @@ namespace Tarea1Progra.Paginas
 
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-#jidofgjhufdjgh9
+
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
