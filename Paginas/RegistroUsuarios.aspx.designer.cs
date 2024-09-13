@@ -11,7 +11,7 @@ namespace Tarea1Progra.Paginas
 {
 
 
-    public partial class RegistroUsuarios
+    public partial class RegistroUsuarios1
     {
 
         /// <summary>
