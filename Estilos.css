@@ -1,0 +1,138 @@
+﻿body {
+    font-family: "Lato", sans-serif;
+}
+
+h1 {
+    font-family: 'Kaushan Script', cursive;
+    text-align: center;
+    color: #000000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.main-head {
+    height: 150px;
+    background: #FFF;
+}
+
+.sidenav {
+    height: 100%;
+    background-color: #000;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/*css para los elementos principales*/
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    padding: 0px 10px;
+}
+
+/*centrado de la pagina*/
+.iniciarS-form {
+    width: 100%;
+    max-width: 400px; /*ancho maximo de la pagina*/
+    margin: auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /*bordes redondeados*/
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .login-form {
+        margin-top: 10%;
+    }
+
+    .registrar-form {
+        margin-top: 10%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .main {
+        margin-left: 40%;
+    }
+
+    .sidenav {
+        width: 40%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form {
+        margin-top: 0; 
+    }
+
+    .registrar-form {
+        margin-top: 20%;
+    }
+}
+
+.login-main-text {
+    margin-top: 20%;
+    padding: 60px;
+    color: #fff;
+}
+
+    .login-main-text h2 {
+        font-weight: 300;
+    }
+
+
+/*contenedor/panel de los lbl, txt y los botones*/
+.panel {
+    background: white;
+    border: 2px solid black; 
+    border-radius: 8px; 
+    padding: 20px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px; /*añade espacio debajo de cada txt, lbl de la pagina*/
+    display: flex;
+    gap: 10px; /* Espacio entre botones */
+}
+
+/*botones*/
+
+.btn {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-Regis, .btn-Ini {
+    background-color: #000 !important;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer; /*cambia el cursor al pasar sobre el boton*/
+    width: auto;
+}
+
+.btn-black, .btn-2 {
+    margin-right: 10px;
+    background-color: #000 !important;
+    color: #fff;
+
+}
+
+.btn-2 {
+    margin-left: 0; 
+}
