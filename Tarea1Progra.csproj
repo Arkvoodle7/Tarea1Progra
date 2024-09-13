@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="Paginas\EdicionNotas.aspx.designer.cs">
       <DependentUpon>EdicionNotas.aspx</DependentUpon>
+	</Compile>
     <Content Include="Estilos\EstiloEladio.css" />
     <Content Include="Paginas\Menu_Principal.aspx" />
     <Content Include="Web.config" />
