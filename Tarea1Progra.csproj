@@ -67,8 +67,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Estilos.css" />
     <Content Include="Estilos\EdicionEstilso}.css" />
     <Content Include="Paginas\EdicionNotas.aspx" />
+    <Content Include="Paginas\WB_Login.aspx" />
+    <Content Include="Paginas\WB_RegistroUsuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -78,8 +81,8 @@
     </Compile>
     <Compile Include="Paginas\EdicionNotas.aspx.designer.cs">
       <DependentUpon>EdicionNotas.aspx</DependentUpon>
-	</Compile>
-    <Content Include="Estilos\EstiloEladio.css" />
+    </Compile>
+    <Content Include="Paginas\EstiloEladio.css" />
     <Content Include="Paginas\Menu_Principal.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -90,6 +93,20 @@
     </Compile>
     <Compile Include="Paginas\Menu_Principal.aspx.designer.cs">
       <DependentUpon>Menu_Principal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\WB_Login.aspx.cs">
+      <DependentUpon>WB_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\WB_Login.aspx.designer.cs">
+      <DependentUpon>WB_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\WB_RegistroUsuarios.aspx.cs">
+      <DependentUpon>WB_RegistroUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\WB_RegistroUsuarios.aspx.designer.cs">
+      <DependentUpon>WB_RegistroUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
