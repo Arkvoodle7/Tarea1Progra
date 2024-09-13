@@ -8,6 +8,7 @@
     <title></title>
 </head>
 <body>
+    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
     <form id="form1" runat="server">
         <div>
         </div>
