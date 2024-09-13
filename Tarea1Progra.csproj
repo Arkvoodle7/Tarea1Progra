@@ -81,7 +81,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Estilos\" />
+    <Folder Include="Paginas\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Negocios\Negocios.csproj">
       <Project>{6bb94020-a1b4-497e-a84c-17dd0b24a772}</Project>
