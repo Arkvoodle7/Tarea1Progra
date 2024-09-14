@@ -51,13 +51,40 @@ namespace Tarea1Progra.Paginas
         protected global::System.Web.UI.WebControls.Button btnExportarNotas;
 
         /// <summary>
-        /// Control gvNotas.
+        /// Control rptNotas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvNotas;
+        protected global::System.Web.UI.WebControls.Repeater rptNotas;
+
+        /// <summary>
+        /// Control pnlVerNota.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlVerNota;
+
+        /// <summary>
+        /// Control lblTituloNota.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTituloNota;
+
+        /// <summary>
+        /// Control lblContenidoNota.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContenidoNota;
 
         /// <summary>
         /// Control pnlConfirmacion.

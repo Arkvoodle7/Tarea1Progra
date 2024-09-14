@@ -114,6 +114,29 @@ namespace Datos
             SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
             return reader;
         }
+        public SqlDataReader ObtenerNotasConContenido(int usuarioId)
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            string query = "SELECT Nota_ID, Titulo, Contenido, Fecha_creacion FROM Notas WHERE Usuario_ID = @Usuario_ID";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
 
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+            return reader;
+        }
+
+        public SqlDataReader ObtenerTituloNotaPorId(int notaId, int usuarioId)
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            string query = "SELECT Titulo FROM Notas WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@Nota_ID", notaId);
+            cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
+
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+            return reader;
+        }
     }
 }

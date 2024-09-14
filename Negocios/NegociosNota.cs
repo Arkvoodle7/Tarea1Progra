@@ -178,6 +178,41 @@ namespace Negocios
                 return deriveBytes.GetBytes(32); // 256 bits para AES-256
             }
         }
+        public List<NotaDTO> ObtenerNotasConContenido(int usuarioId, string claveUsuario, byte[] salt)
+        {
+            List<NotaDTO> notas = new List<NotaDTO>();
+            using (SqlDataReader reader = accesoDatos.ObtenerNotasConContenido(usuarioId))
+            {
+                while (reader.Read())
+                {
+                    NotaDTO nota = new NotaDTO
+                    {
+                        Nota_ID = Convert.ToInt32(reader["Nota_ID"]),
+                        Titulo = reader["Titulo"].ToString(),
+                        Fecha_creacion = Convert.ToDateTime(reader["Fecha_creacion"]),
+                        Contenido = DesencriptarContenido((byte[])reader["Contenido"], claveUsuario, salt)
+                    };
+                    notas.Add(nota);
+                }
+                reader.Close();
+            }
+            return notas;
+        }
+
+        public string ObtenerTituloNota(int notaId, int usuarioId)
+        {
+            using (SqlDataReader reader = accesoDatos.ObtenerTituloNotaPorId(notaId, usuarioId))
+            {
+                if (reader.Read())
+                {
+                    return reader["Titulo"].ToString();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
     }
 
     // DTO para notas
@@ -186,6 +221,7 @@ namespace Negocios
         public int Nota_ID { get; set; }
         public string Titulo { get; set; }
         public DateTime Fecha_creacion { get; set; }
+        public string Contenido { get; set; } // Agregada
     }
 
     public class NotaExportarDTO

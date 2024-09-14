@@ -30,9 +30,12 @@ namespace Tarea1Progra.Paginas
 
         private void CargarNotas()
         {
-            List<NotaDTO> notas = negociosNota.ObtenerNotas(usuarioId);
-            gvNotas.DataSource = notas;
-            gvNotas.DataBind();
+            string claveUsuario = Session["ClaveUsuario"] as string;
+            byte[] salt = Session["SaltUsuario"] as byte[];
+
+            List<NotaDTO> notas = negociosNota.ObtenerNotasConContenido(usuarioId, claveUsuario, salt);
+            rptNotas.DataSource = notas;
+            rptNotas.DataBind();
         }
 
         protected void btnAgregarNotas_Click(object sender, EventArgs e)
@@ -40,8 +43,13 @@ namespace Tarea1Progra.Paginas
             Response.Redirect("AgregarNotas.aspx");
         }
 
-        protected void gvNotas_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void rptNotas_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            // Cerrar el modal de ver nota si está visible
+            pnlVerNota.Visible = false;
+            lblTituloNota.Text = string.Empty;
+            lblContenidoNota.Text = string.Empty;
+
             int notaId = Convert.ToInt32(e.CommandArgument);
 
             if (e.CommandName == "Ver")
@@ -68,7 +76,16 @@ namespace Tarea1Progra.Paginas
 
             if (contenidoDesencriptado != null)
             {
-                lblMensaje.Text = $"Contenido de la nota: {contenidoDesencriptado}";
+                // Obtener el título de la nota
+                string tituloNota = negociosNota.ObtenerTituloNota(notaId, usuarioId);
+
+                lblTituloNota.Text = tituloNota;
+                lblContenidoNota.Text = contenidoDesencriptado;
+                pnlVerNota.Visible = true;
+            }
+            else
+            {
+                lblMensaje.Text = "No se pudo obtener el contenido de la nota.";
             }
         }
 
@@ -90,11 +107,11 @@ namespace Tarea1Progra.Paginas
             }
             else if (notasSeleccionadas.Count == 0)
             {
-                lblMensaje.Text = "Por favor seleccione una nota";
+                lblMensaje.Text = "Por favor, seleccione una nota.";
             }
             else
             {
-                lblMensaje.Text = "Seleccione solo una nota";
+                lblMensaje.Text = "Seleccione solo una nota.";
             }
         }
 
@@ -126,19 +143,20 @@ namespace Tarea1Progra.Paginas
             }
             else
             {
-                lblMensaje.Text = "Por favor seleccione una nota.";
+                lblMensaje.Text = "Por favor, seleccione al menos una nota.";
             }
         }
 
         private List<int> ObtenerNotasSeleccionadas()
         {
             List<int> seleccionadas = new List<int>();
-            foreach (GridViewRow row in gvNotas.Rows)
+            foreach (RepeaterItem item in rptNotas.Items)
             {
-                CheckBox chk = (CheckBox)row.FindControl("chkSelect");
-                if (chk != null && chk.Checked)
+                CheckBox chk = (CheckBox)item.FindControl("chkSelect");
+                HiddenField hdnNotaId = (HiddenField)item.FindControl("hdnNotaId");
+                if (chk != null && hdnNotaId != null && chk.Checked)
                 {
-                    int notaId = Convert.ToInt32(gvNotas.DataKeys[row.RowIndex].Value);
+                    int notaId = Convert.ToInt32(hdnNotaId.Value);
                     seleccionadas.Add(notaId);
                 }
             }
@@ -149,8 +167,15 @@ namespace Tarea1Progra.Paginas
         {
             int notaId = Convert.ToInt32(ViewState["NotaSeleccionadaID"]);
 
+            // Eliminar la nota
             negociosNota.EliminarNota(notaId, usuarioId);
 
+            // Ocultar cualquier modal que esté abierto, en este caso, el de ver nota
+            pnlVerNota.Visible = false;
+            lblTituloNota.Text = string.Empty;
+            lblContenidoNota.Text = string.Empty;
+
+            // Actualizar la interfaz
             pnlConfirmacion.Visible = false;
             lblMensaje.Text = "Nota eliminada con éxito.";
             CargarNotas();
@@ -161,6 +186,5 @@ namespace Tarea1Progra.Paginas
             pnlConfirmacion.Visible = false;
         }
 
-        // Los demás métodos permanecen igual o puedes adaptarlos según sea necesario
     }
 }
