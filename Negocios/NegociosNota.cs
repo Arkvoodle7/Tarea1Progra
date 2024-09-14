@@ -213,6 +213,34 @@ namespace Negocios
                 }
             }
         }
+        public void ModificarNota(int notaId, int usuarioId, string nuevoTitulo, string nuevoContenido, string claveUsuario, byte[] salt)
+        {
+            byte[] contenidoCifrado = EncriptarContenido(nuevoContenido, claveUsuario, salt);
+            accesoDatos.ActualizarNota(notaId, usuarioId, nuevoTitulo, contenidoCifrado);
+        }
+        public NotaDTO ObtenerNotaPorId(int notaId, int usuarioId, string claveUsuario, byte[] salt)
+        {
+            NotaDTO nota = null;
+            using (var reader = accesoDatos.ObtenerNotaPorId(notaId, usuarioId))
+            {
+                if (reader.Read())
+                {
+                    string titulo = reader["Titulo"].ToString();
+                    byte[] contenidoCifrado = (byte[])reader["Contenido"];
+                    string contenidoDesencriptado = DesencriptarContenido(contenidoCifrado, claveUsuario, salt);
+
+                    nota = new NotaDTO
+                    {
+                        Nota_ID = notaId,
+                        Titulo = titulo,
+                        Contenido = contenidoDesencriptado  // Asignar el contenido desencriptado
+                    };
+                }
+                reader.Close();
+            }
+            return nota;
+        }
+
     }
 
     // DTO para notas

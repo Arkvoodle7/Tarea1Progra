@@ -58,8 +58,9 @@ namespace Tarea1Progra.Paginas
             }
             else if (e.CommandName == "Editar")
             {
-                Response.Redirect($"EditarNota.aspx?Nota_ID={notaId}");
+                Response.Redirect($"EditarNota.aspx?notaId={notaId}"); // Redirige a la página de edición
             }
+
             else if (e.CommandName == "Eliminar")
             {
                 ViewState["NotaSeleccionadaID"] = notaId;
