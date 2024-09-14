@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Tarea1Progra.Paginas.Login1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Tarea1Progra.Paginas.Login" %>
 
 <!DOCTYPE html>
 
@@ -15,24 +15,26 @@
         <div class="sidenav"> 
             <div class="login-main-text">
                 <h2>KeepNotes</h2>
-                <p>Inicio de sesion y registro de usuarios</p>
+                <p>Inicio de sesión y registro de usuarios</p>
             </div>
         </div>
         <div class="main">
                 <div class="iniciarS-form">
-                    <asp:Panel class="panel" ID="LoginPanel" runat="server">
+                    <asp:Panel ID="LoginPanel" runat="server" CssClass="panel">
                         <div class="form-group">
-                            <asp:Label ID="lblUsuario" runat="server" Text="Usuario"></asp:Label>            
-                            <p><asp:TextBox ID="txtUsuario" CssClass="form-control" runat="server" placeholder="Usuario"></asp:TextBox></p>
+                            <asp:Label ID="lblCorreo" runat="server" Text="Usuario (Correo Electrónico)"></asp:Label>            
+                            <p><asp:TextBox ID="txtCorreo" CssClass="form-control" runat="server" placeholder="Correo Electrónico"></asp:TextBox></p>
                         </div>
                         <div class="form-group">
-                            <asp:Label ID="lblContraseña" runat="server" Text="Contraseña"></asp:Label> 
-                            <p><asp:TextBox ID="txtContraseña" CssClass="form-control" runat="server" TextMode="Password" placeholder="Contraseña"></asp:TextBox></p>
+                            <asp:Label ID="lblContrasena" runat="server" Text="Contrasena"></asp:Label> 
+                            <p><asp:TextBox ID="txtContrasena" CssClass="form-control" runat="server" TextMode="Password" placeholder="Contrasena"></asp:TextBox></p>
                         </div>
                         <div class="form-group">
-                            <asp:Button ID="btnIniciarSesion" CssClass="btn btn-black" runat="server" Text="Iniciar Sesion" OnClick="btnIniciarSesion_Click" />
+                            <asp:Button ID="btnIniciarSesion" CssClass="btn btn-black" runat="server" Text="Iniciar Sesión" OnClick="btnIniciarSesion_Click" />
                             <asp:Button ID="btnRegistrar" CssClass="btn btn-2" runat="server" Text="Registrar Usuario" OnClick="btnRegistrar_Click" />
                         </div>
+                        <!-- Mensajes -->
+                        <asp:Label ID="lblMensaje" runat="server" CssClass="mensaje"></asp:Label>
                     </asp:Panel>
                 </div>
             </div>
