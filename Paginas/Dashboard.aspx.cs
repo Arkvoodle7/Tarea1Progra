@@ -161,6 +161,7 @@ namespace Tarea1Progra.Paginas
             pnlConfirmacion.Visible = false;
         }
 
+
         // Los demás métodos permanecen igual o puedes adaptarlos según sea necesario
     }
 }

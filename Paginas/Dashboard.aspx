@@ -28,7 +28,7 @@
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:LinkButton ID="lnkVer" runat="server" CommandName="Ver" CommandArgument='<%# Eval("Nota_ID") %>' CssClass="action-link">Ver</asp:LinkButton>
-                            <asp:LinkButton ID="lnkEditar" runat="server" CommandName="Editar" CommandArgument='<%# Eval("Nota_ID") %>' CssClass="action-link">Editar</asp:LinkButton>
+                           <asp:LinkButton ID="lnkEditar" runat="server" CommandName="Editar" CommandArgument='<%# Eval("Nota_ID") %>' CssClass="action-link">Editar</asp:LinkButton>
                             <asp:LinkButton ID="lnkEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("Nota_ID") %>' CssClass="action-link">Eliminar</asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
