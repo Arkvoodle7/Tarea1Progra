@@ -1,16 +1,40 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AgregarNotas.aspx.cs" Inherits="Tarea1Progra.Paginas.AgregarNotas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AgregarNotas.aspx.cs" Inherits="Tarea1Progra.Paginas.AgregarNota" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>Agregar Nota</title>
+    <link href="../Estilos/Styles.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="form-container">
+            <h1>Agregar Nueva Nota</h1>
+            <div class="form-group">
+                <asp:Label ID="lblTitulo" runat="server" Text="Título"></asp:Label>
+                <asp:TextBox ID="txtTitulo" runat="server" CssClass="input-text"></asp:TextBox>
+            </div>
+            <div class="form-group">
+                <asp:Label ID="lblContenido" runat="server" Text="Contenido"></asp:Label>
+                <asp:TextBox ID="txtContenido" runat="server" TextMode="MultiLine" CssClass="input-textarea"></asp:TextBox>
+            </div>
+            <div class="form-group">
+                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click" CssClass="btn" />
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" CssClass="btn" />
+            </div>
+            <!-- Mensajes -->
+            <asp:Label ID="lblMensaje" runat="server" CssClass="mensaje"></asp:Label>
         </div>
+
+        <!-- Panel Modal para el mensaje -->
+        <asp:Panel ID="pnlMensaje" runat="server" CssClass="modal" Visible="false">
+            <div class="modal-content">
+                <asp:Label ID="lblMensajeModal" runat="server" Text=""></asp:Label>
+                <br /><br />
+                <asp:Button ID="btnOk" runat="server" Text="OK" OnClick="btnOk_Click" CssClass="btn" />
+            </div>
+        </asp:Panel>
     </form>
 </body>
 </html>
