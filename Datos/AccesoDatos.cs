@@ -138,5 +138,22 @@ namespace Datos
             SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
             return reader;
         }
+        public void ActualizarNota(int notaId, int usuarioId, string nuevoTitulo, byte[] contenidoCifrado)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string query = "UPDATE Notas SET Titulo = @Titulo, Contenido = @Contenido WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Titulo", nuevoTitulo);
+                cmd.Parameters.AddWithValue("@Contenido", contenidoCifrado);
+                cmd.Parameters.AddWithValue("@Nota_ID", notaId);
+                cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
+
     }
 }
