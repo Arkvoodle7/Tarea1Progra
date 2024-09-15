@@ -58,6 +58,13 @@ namespace Tarea1Progra.Paginas
                 negociosNota.ModificarNota(notaId, usuarioId, nuevoTitulo, nuevoContenido, claveUsuario, salt);
                 lblMensaje.Text = "Nota modificada con éxito.";
                 lblMensaje.Visible = true;
+                // Inyectar un script de JavaScript para redirigir después de 2 segundos
+                string script = @"
+                    setTimeout(function() {
+                        window.location.href = 'Dashboard.aspx';
+                    }, 2000);"; // 2000 milisegundos = 2 segundos
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script, true);
             }
             catch (Exception ex)
             {
