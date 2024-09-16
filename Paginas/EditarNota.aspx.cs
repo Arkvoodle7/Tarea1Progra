@@ -56,16 +56,8 @@ namespace Tarea1Progra.Paginas
             try
             {
                 negociosNota.ModificarNota(notaId, usuarioId, nuevoTitulo, nuevoContenido, claveUsuario, salt);
-                lblMensaje.Text = "Nota modificada con éxito";
-                lblMensaje.Visible = true;
-
-                //inyectar un script de JS para redirigir después de 2 segundos
-                string script = @"
-            setTimeout(function() {
-                window.location.href = 'Dashboard.aspx';
-            }, 2000);"; //2000 milisegundos = 2 segundos
-
-                ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script, true);
+                lblMensajeModal.Text = "Nota modificada con éxito";
+                pnlMensaje.Visible = true;
             }
             catch (Exception ex)
             {
@@ -74,6 +66,10 @@ namespace Tarea1Progra.Paginas
             }
         }
 
+        protected void btnOk_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Dashboard.aspx");
+        }
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
