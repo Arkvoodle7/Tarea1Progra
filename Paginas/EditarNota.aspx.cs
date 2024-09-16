@@ -15,6 +15,7 @@ namespace Tarea1Progra.Paginas
         private int usuarioId;
         private string claveUsuario;
         private byte[] salt;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Usuario_ID"] == null || !int.TryParse(Request.QueryString["notaId"], out notaId))
@@ -32,6 +33,7 @@ namespace Tarea1Progra.Paginas
                 CargarNota();
             }
         }
+
         private void CargarNota()
         {
             var nota = negociosNota.ObtenerNotaPorId(notaId, usuarioId, claveUsuario, salt);
@@ -58,6 +60,14 @@ namespace Tarea1Progra.Paginas
                 negociosNota.ModificarNota(notaId, usuarioId, nuevoTitulo, nuevoContenido, claveUsuario, salt);
                 lblMensaje.Text = "Nota modificada con éxito.";
                 lblMensaje.Visible = true;
+
+                // Inyectar un script de JavaScript para redirigir después de 3 segundos
+                string script = @"
+                    setTimeout(function() {
+                        window.location.href = 'Dashboard.aspx';
+                    }, 3000);"; // 3000 milisegundos = 3 segundos
+
+                ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script, true);
             }
             catch (Exception ex)
             {

@@ -12,148 +12,133 @@ namespace Datos
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["KeepNotesDB"].ConnectionString;
 
-        // Métodos para usuarios
-        public SqlDataReader ObtenerUsuarioPorCorreo(string correo)
+        // Método auxiliar para ejecutar comandos con lector
+        private SqlDataReader EjecutarComandoLectura(string query, Action<SqlCommand> parametros)
         {
             SqlConnection conn = new SqlConnection(connectionString);
-            string query = "SELECT Usuario_ID, Contrasena, Salt FROM Usuarios WHERE Correo = @Correo";
             SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@Correo", correo);
-
+            parametros?.Invoke(cmd);
             conn.Open();
-            SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
-            return reader;
+            return cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
         }
 
-        public void InsertarUsuario(string correo, byte[] contrasenaHash, byte[] salt)
+        // Método auxiliar para ejecutar comandos sin lector
+        private void EjecutarComando(string query, Action<SqlCommand> parametros)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO Usuarios (Correo, Contrasena, Salt) VALUES (@Correo, @Contrasena, @Salt)";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Correo", correo);
-                cmd.Parameters.AddWithValue("@Contrasena", contrasenaHash);
-                cmd.Parameters.AddWithValue("@Salt", salt);
-
+                parametros?.Invoke(cmd);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }
+        }
+
+        // Métodos para usuarios
+        public SqlDataReader ObtenerUsuarioPorCorreo(string correo)
+        {
+            string query = "SELECT Usuario_ID, Contrasena, Salt FROM Usuarios WHERE Correo = @Correo";
+            return EjecutarComandoLectura(query, cmd =>
+            {
+                cmd.Parameters.AddWithValue("@Correo", correo);
+            });
+        }
+
+        public void InsertarUsuario(string correo, byte[] contrasenaHash, byte[] salt)
+        {
+            string query = "INSERT INTO Usuarios (Correo, Contrasena, Salt) VALUES (@Correo, @Contrasena, @Salt)";
+            EjecutarComando(query, cmd =>
+            {
+                cmd.Parameters.AddWithValue("@Correo", correo);
+                cmd.Parameters.AddWithValue("@Contrasena", contrasenaHash);
+                cmd.Parameters.AddWithValue("@Salt", salt);
+            });
         }
 
         // Métodos para notas
         public SqlDataReader ObtenerNotasPorUsuario(int usuarioId)
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             string query = "SELECT Nota_ID, Titulo, Fecha_creacion FROM Notas WHERE Usuario_ID = @Usuario_ID";
-            SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
-
-            conn.Open();
-            SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
-            return reader;
+            return EjecutarComandoLectura(query, cmd =>
+            {
+                cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
+            });
         }
 
         public byte[] ObtenerContenidoNota(int notaId, int usuarioId)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            string query = "SELECT Contenido FROM Notas WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
+            byte[] contenidoCifrado = null;
+            EjecutarComando(query, cmd =>
             {
-                string query = "SELECT Contenido FROM Notas WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
-                SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Nota_ID", notaId);
                 cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
-
-                conn.Open();
-                byte[] contenidoCifrado = cmd.ExecuteScalar() as byte[];
-                conn.Close();
-
-                return contenidoCifrado;
-            }
+                contenidoCifrado = cmd.ExecuteScalar() as byte[];
+            });
+            return contenidoCifrado;
         }
 
         public void InsertarNota(int usuarioId, string titulo, byte[] contenidoCifrado)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            string query = "INSERT INTO Notas (Usuario_ID, Titulo, Contenido) VALUES (@Usuario_ID, @Titulo, @Contenido)";
+            EjecutarComando(query, cmd =>
             {
-                string query = "INSERT INTO Notas (Usuario_ID, Titulo, Contenido) VALUES (@Usuario_ID, @Titulo, @Contenido)";
-                SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
                 cmd.Parameters.AddWithValue("@Titulo", titulo);
                 cmd.Parameters.AddWithValue("@Contenido", contenidoCifrado);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-            }
+            });
         }
 
         public void EliminarNota(int notaId, int usuarioId)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            string query = "DELETE FROM Notas WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
+            EjecutarComando(query, cmd =>
             {
-                string query = "DELETE FROM Notas WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
-                SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Nota_ID", notaId);
                 cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-            }
+            });
         }
 
         public SqlDataReader ObtenerNotaPorId(int notaId, int usuarioId)
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             string query = "SELECT Titulo, Contenido FROM Notas WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
-            SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@Nota_ID", notaId);
-            cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
-
-            conn.Open();
-            SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
-            return reader;
+            return EjecutarComandoLectura(query, cmd =>
+            {
+                cmd.Parameters.AddWithValue("@Nota_ID", notaId);
+                cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
+            });
         }
+
         public SqlDataReader ObtenerNotasConContenido(int usuarioId)
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             string query = "SELECT Nota_ID, Titulo, Contenido, Fecha_creacion FROM Notas WHERE Usuario_ID = @Usuario_ID";
-            SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
-
-            conn.Open();
-            SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
-            return reader;
+            return EjecutarComandoLectura(query, cmd =>
+            {
+                cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
+            });
         }
 
         public SqlDataReader ObtenerTituloNotaPorId(int notaId, int usuarioId)
         {
-            SqlConnection conn = new SqlConnection(connectionString);
             string query = "SELECT Titulo FROM Notas WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
-            SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@Nota_ID", notaId);
-            cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
-
-            conn.Open();
-            SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
-            return reader;
+            return EjecutarComandoLectura(query, cmd =>
+            {
+                cmd.Parameters.AddWithValue("@Nota_ID", notaId);
+                cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
+            });
         }
+
         public void ActualizarNota(int notaId, int usuarioId, string nuevoTitulo, byte[] contenidoCifrado)
         {
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            string query = "UPDATE Notas SET Titulo = @Titulo, Contenido = @Contenido WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
+            EjecutarComando(query, cmd =>
             {
-                string query = "UPDATE Notas SET Titulo = @Titulo, Contenido = @Contenido WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
-                SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Titulo", nuevoTitulo);
                 cmd.Parameters.AddWithValue("@Contenido", contenidoCifrado);
                 cmd.Parameters.AddWithValue("@Nota_ID", notaId);
                 cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-            }
+            });
         }
-
     }
 }
