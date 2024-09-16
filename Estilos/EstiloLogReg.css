@@ -1,138 +1,122 @@
-﻿body {
-    font-family: "Lato", sans-serif;
+﻿   body{ 
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-    font-family: 'Kaushan Script', cursive;
-    text-align: center;
-    color: #000000;
-    margin-top: 10px;
+h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #FFFFFF;
     margin-bottom: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
-.main-head {
-    height: 150px;
-    background: #FFF;
+p {
+    font-size: 1.2em;
+    color: #FFFFFF;
 }
 
 .sidenav {
     height: 100%;
     background-color: #000;
-    overflow-x: hidden;
     padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-/*css para los elementos principales*/
 .main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
-    padding: 0px 10px;
+    height: 70vh;
+    padding: 20px;
+    background-color: #f4f4f4;
 }
 
-/*centrado de la pagina*/
 .iniciarS-form {
     width: 100%;
-    max-width: 400px; /*ancho maximo de la pagina*/
+    max-width: 400px;
     margin: auto;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 15px; /*bordes redondeados*/
+    margin-top: 10vh;
+    padding: 25px;
+    border: 3.5px solid black;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-}
-
-@media screen and (max-width: 450px) {
-    .login-form {
-        margin-top: 10%;
-    }
-
-    .registrar-form {
-        margin-top: 10%;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .main {
-        margin-left: 40%;
-    }
-
-    .sidenav {
-        width: 40%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-    }
-
-    .login-form {
-        margin-top: 0; 
-    }
-
-    .registrar-form {
-        margin-top: 20%;
-    }
-}
-
-.login-main-text {
-    margin-top: 20%;
-    padding: 60px;
-    color: #fff;
-}
-
-    .login-main-text h2 {
-        font-weight: 300;
-    }
-
-
-/*contenedor/panel de los lbl, txt y los botones*/
 .panel {
     background: white;
-    border: 2px solid black; 
-    border-radius: 8px; 
-    padding: 20px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
-    margin-bottom: 20px; /*añade espacio debajo de cada txt, lbl de la pagina*/
-    display: flex;
-    gap: 10px; /* Espacio entre botones */
+    margin-bottom: 15px;
 }
 
-/*botones*/
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: -10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
 
 .btn {
-    display: flex;
-    justify-content: center;
-}
-
-.btn-Regis, .btn-Ini {
-    background-color: #000 !important;
-    color: #fff;
-    padding: 10px 20px;
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1rem;
+    color: white;
+    background-color: #000;
     border: none;
     border-radius: 8px;
-    text-align: center;
-    cursor: pointer; /*cambia el cursor al pasar sobre el boton*/
-    width: auto;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 0.5rem;
 }
 
-.btn-black, .btn-2 {
-    margin-right: 10px;
-    background-color: #000 !important;
-    color: #fff;
-
+.btn:hover {
+    background-color: #4A47A3;
 }
 
 .btn-2 {
-    margin-left: 0; 
+    background-color: #555;
+}
+
+.btn-2:hover {
+    background-color: #6E6E6E;
+}
+
+.mensaje {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
 }
