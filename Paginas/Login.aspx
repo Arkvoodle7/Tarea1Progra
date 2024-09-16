@@ -26,8 +26,8 @@
                             <p><asp:TextBox ID="txtCorreo" CssClass="form-control" runat="server" placeholder="Correo Electrónico"></asp:TextBox></p>
                         </div>
                         <div class="form-group">
-                            <asp:Label ID="lblContrasena" runat="server" Text="Contrasena"></asp:Label> 
-                            <p><asp:TextBox ID="txtContrasena" CssClass="form-control" runat="server" TextMode="Password" placeholder="Contrasena"></asp:TextBox></p>
+                            <asp:Label ID="lblContrasena" runat="server" Text="Contraseña"></asp:Label> 
+                            <p><asp:TextBox ID="txtContrasena" CssClass="form-control" runat="server" TextMode="Password" placeholder="Contraseña"></asp:TextBox></p>
                         </div>
                         <div class="form-group">
                             <asp:Button ID="btnIniciarSesion" CssClass="btn btn-black" runat="server" Text="Iniciar Sesión" OnClick="btnIniciarSesion_Click" />

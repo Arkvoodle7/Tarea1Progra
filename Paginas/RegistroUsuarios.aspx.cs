@@ -24,7 +24,7 @@ namespace Tarea1Progra.Paginas
             {
                 lblMensajeModal.Text = "Se ha creado el usuario.";
                 pnlMensaje.Visible = true;
-                RegistroPanel.Visible = false; // Ocultamos el panel de registro
+                //RegistroPanel.Visible = false; // Ocultamos el panel de registro
             }
             else
             {
