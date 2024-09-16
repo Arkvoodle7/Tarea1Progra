@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -68,12 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Estilos\EstiloLogReg.css" />
+    <Content Include="Estilos\EstiloModNotas.css" />
+    <Content Include="Paginas\EditarNota.aspx" />
     <Content Include="Paginas\Login.aspx" />
     <Content Include="Paginas\RegistroUsuarios.aspx" />
     <Content Include="Estilos\EstiloAgrModNotas.css" />
     <Content Include="Estilos\EstiloDashboard.css" />
     <Content Include="Paginas\AgregarNotas.aspx" />
-    <Content Include="Paginas\ModificarNotas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,19 +88,19 @@
     <Compile Include="Paginas\AgregarNotas.aspx.designer.cs">
       <DependentUpon>AgregarNotas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Paginas\EditarNota.aspx.cs">
+      <DependentUpon>EditarNota.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Paginas\EditarNota.aspx.designer.cs">
+      <DependentUpon>EditarNota.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Paginas\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Paginas\ModificarNotas.aspx.cs">
-      <DependentUpon>ModificarNotas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Paginas\ModificarNotas.aspx.designer.cs">
-      <DependentUpon>ModificarNotas.aspx</DependentUpon>
     </Compile>
     <Content Include="Paginas\Dashboard.aspx" />
     <Content Include="Web.config" />
