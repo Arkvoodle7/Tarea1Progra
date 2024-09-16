@@ -22,7 +22,7 @@ namespace Tarea1Progra.Paginas
 
             if (registrado)
             {
-                lblMensajeModal.Text = "Se ha creado el usuario.";
+                lblMensajeModal.Text = "Se ha creado el usuario";
                 pnlMensaje.Visible = true;
                 //RegistroPanel.Visible = false; // Ocultamos el panel de registro
             }

@@ -4,10 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Agregar Nota</title>
-    <link href="../Estilos/EstiloAgrModNotas.css" rel="stylesheet" />
+    <link href="../Estilos/EstiloAgrNotas.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="formAgregarNota" runat="server">
         <div class="dashboard-container">
             <h1>Agregar Nueva Nota</h1>
             <div class="form-group">

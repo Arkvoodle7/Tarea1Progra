@@ -31,7 +31,7 @@ namespace Tarea1Progra.Paginas
             {
                 negociosNota.AgregarNota(usuarioId, titulo, contenido, claveUsuario, salt);
 
-                lblMensajeModal.Text = "Nota almacenada con éxito.";
+                lblMensajeModal.Text = "Nota almacenada con éxito";
                 pnlMensaje.Visible = true;
                 // Ocultar el formulario
                 txtTitulo.Enabled = false;
@@ -41,7 +41,7 @@ namespace Tarea1Progra.Paginas
             }
             else
             {
-                lblMensaje.Text = "Debe ingresar un título y contenido para la nota.";
+                lblMensaje.Text = "Debe ingresar un título y contenido para la nota";
             }
         }
 

@@ -36,12 +36,12 @@ namespace Negocios
 
                 if (CompararHashes(contrasenaAlmacenada, contrasenaIngresadaHash))
                 {
-                    // Credenciales correctas
+                    //credenciales correctas
                     return usuarioId;
                 }
             }
 
-            // Credenciales incorrectas
+            //credenciales incorrectas
             return -1;
         }
 
@@ -54,10 +54,10 @@ namespace Negocios
                 return false;
             }
 
-            // Generar Salt
+            //generar Salt
             byte[] salt = GenerarSalt();
 
-            // Hashear la contraseña con el Salt
+            //hashear la contraseña con el Salt
             byte[] contrasenaHash = HashearContrasena(contrasena, salt);
 
             try
@@ -67,7 +67,7 @@ namespace Negocios
             }
             catch (SqlException ex)
             {
-                if (ex.Number == 2627) // Violación de restricción UNIQUE (Correo ya existe)
+                if (ex.Number == 2627)
                 {
                     mensaje = "El correo ya está registrado.";
                 }
@@ -81,7 +81,7 @@ namespace Negocios
 
         private bool EsContrasenaValida(string contrasena)
         {
-            // Validar que la contraseña tenga al menos 8 caracteres, letras, números y caracteres especiales
+            //validar que la contraseña tenga al menos 8 caracteres, letras, números y caracteres especiales
             if (contrasena.Length < 8)
                 return false;
             if (!System.Text.RegularExpressions.Regex.IsMatch(contrasena, @"[A-Za-z]"))
@@ -95,7 +95,7 @@ namespace Negocios
 
         private byte[] GenerarSalt()
         {
-            byte[] salt = new byte[16]; // 128 bits
+            byte[] salt = new byte[16]; //128 bits
             using (var rng = new RNGCryptoServiceProvider())
             {
                 rng.GetBytes(salt);
@@ -107,7 +107,7 @@ namespace Negocios
         {
             using (var deriveBytes = new Rfc2898DeriveBytes(contrasena, salt, 10000))
             {
-                return deriveBytes.GetBytes(32); // 256 bits
+                return deriveBytes.GetBytes(32); //256 bits
             }
         }
 

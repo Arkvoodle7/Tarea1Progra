@@ -75,7 +75,7 @@
     <Content Include="Paginas\EditarNota.aspx" />
     <Content Include="Paginas\Login.aspx" />
     <Content Include="Paginas\RegistroUsuarios.aspx" />
-    <Content Include="Estilos\EstiloAgrModNotas.css" />
+    <Content Include="Estilos\EstiloAgrNotas.css" />
     <Content Include="Estilos\EstiloDashboard.css" />
     <Content Include="Paginas\AgregarNotas.aspx" />
     <Content Include="Web.config" />

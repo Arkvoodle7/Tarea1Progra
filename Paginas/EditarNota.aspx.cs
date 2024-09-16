@@ -43,7 +43,7 @@ namespace Tarea1Progra.Paginas
             }
             else
             {
-                lblMensaje.Text = "ID de nota no válido.";
+                lblMensaje.Text = "ID de nota no válido";
                 lblMensaje.Visible = true;
             }
         }
@@ -56,13 +56,14 @@ namespace Tarea1Progra.Paginas
             try
             {
                 negociosNota.ModificarNota(notaId, usuarioId, nuevoTitulo, nuevoContenido, claveUsuario, salt);
-                lblMensaje.Text = "Nota modificada con éxito.";
+                lblMensaje.Text = "Nota modificada con éxito";
                 lblMensaje.Visible = true;
-                // Inyectar un script de JavaScript para redirigir después de 2 segundos
+
+                //inyectar un script de JS para redirigir después de 2 segundos
                 string script = @"
-                    setTimeout(function() {
-                        window.location.href = 'Dashboard.aspx';
-                    }, 2000);"; // 2000 milisegundos = 2 segundos
+            setTimeout(function() {
+                window.location.href = 'Dashboard.aspx';
+            }, 2000);"; //2000 milisegundos = 2 segundos
 
                 ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script, true);
             }
@@ -72,6 +73,7 @@ namespace Tarea1Progra.Paginas
                 lblMensaje.Visible = true;
             }
         }
+
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {

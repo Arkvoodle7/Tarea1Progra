@@ -13,7 +13,7 @@ namespace Tarea1Progra.Paginas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Verificar si el usuario ha iniciado sesión
+            //Verificar si el usuario ha iniciado sesión
             if (Session["Usuario_ID"] == null)
             {
                 Response.Redirect("Login.aspx");
@@ -45,7 +45,7 @@ namespace Tarea1Progra.Paginas
 
         protected void rptNotas_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            // Cerrar el modal de ver nota si está visible
+            //cerrar el modal de ver nota si está visible
             pnlVerNota.Visible = false;
             lblTituloNota.Text = string.Empty;
             lblContenidoNota.Text = string.Empty;
@@ -58,7 +58,7 @@ namespace Tarea1Progra.Paginas
             }
             else if (e.CommandName == "Editar")
             {
-                Response.Redirect($"EditarNota.aspx?notaId={notaId}"); // Redirige a la página de edición
+                Response.Redirect($"EditarNota.aspx?notaId={notaId}");
             }
 
             else if (e.CommandName == "Eliminar")
@@ -108,11 +108,11 @@ namespace Tarea1Progra.Paginas
             }
             else if (notasSeleccionadas.Count == 0)
             {
-                lblMensaje.Text = "Por favor, seleccione una nota.";
+                lblMensaje.Text = "Por favor seleccione una nota";
             }
             else
             {
-                lblMensaje.Text = "Seleccione solo una nota.";
+                lblMensaje.Text = "Seleccione solo una nota";
             }
         }
 
@@ -144,7 +144,7 @@ namespace Tarea1Progra.Paginas
             }
             else
             {
-                lblMensaje.Text = "Por favor, seleccione al menos una nota.";
+                lblMensaje.Text = "Por favor, seleccione al menos una nota";
             }
         }
 
@@ -168,17 +168,17 @@ namespace Tarea1Progra.Paginas
         {
             int notaId = Convert.ToInt32(ViewState["NotaSeleccionadaID"]);
 
-            // Eliminar la nota
+            //eliminar la nota
             negociosNota.EliminarNota(notaId, usuarioId);
 
-            // Ocultar cualquier modal que esté abierto, en este caso, el de ver nota
+            //ocultar cualquier modal que esté abierto, en este caso, el de ver nota
             pnlVerNota.Visible = false;
             lblTituloNota.Text = string.Empty;
             lblContenidoNota.Text = string.Empty;
 
-            // Actualizar la interfaz
+            //actualizar la interfaz
             pnlConfirmacion.Visible = false;
-            lblMensaje.Text = "Nota eliminada con éxito.";
+            lblMensaje.Text = "Nota eliminada con éxito";
             CargarNotas();
         }
 

@@ -12,7 +12,6 @@ namespace Datos
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["KeepNotesDB"].ConnectionString;
 
-        // Método auxiliar para ejecutar comandos con lector
         private SqlDataReader EjecutarComandoLectura(string query, Action<SqlCommand> parametros)
         {
             SqlConnection conn = new SqlConnection(connectionString);
@@ -21,7 +20,7 @@ namespace Datos
             conn.Open();
             return cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
         }
-        // Simplificación especial para el metodo de Obtener el Contenido de una nota, para que la conexion no se cierre antes de ejecutar el comando ExecuteScalar
+
         private byte[] EjecutarComandoEscalar(string query, Action<SqlCommand> parametros)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -35,7 +34,7 @@ namespace Datos
             }
         }
 
-        // Método auxiliar para ejecutar comandos sin lector
+        //método auxiliar para ejecutar comandos sin lector
         private void EjecutarComando(string query, Action<SqlCommand> parametros)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -48,7 +47,7 @@ namespace Datos
             }
         }
 
-        // Métodos para usuarios
+        //metodos para usuarios
         public SqlDataReader ObtenerUsuarioPorCorreo(string correo)
         {
             string query = "SELECT Usuario_ID, Contrasena, Salt FROM Usuarios WHERE Correo = @Correo";
@@ -71,7 +70,7 @@ namespace Datos
 
         }
 
-        // Métodos para notas
+        //metodos para notas
         public SqlDataReader ObtenerNotasPorUsuario(int usuarioId)
         {
             string query = "SELECT Nota_ID, Titulo, Fecha_creacion FROM Notas WHERE Usuario_ID = @Usuario_ID";
@@ -143,14 +142,16 @@ namespace Datos
 
         public void ActualizarNota(int notaId, int usuarioId, string nuevoTitulo, byte[] contenidoCifrado)
         {
-            string query = "UPDATE Notas SET Titulo = @Titulo, Contenido = @Contenido WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
+            string query = "UPDATE Notas SET Titulo = @Titulo, Contenido = @Contenido, Fecha_modificacion = @Fecha_modificacion WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
             EjecutarComando(query, cmd =>
             {
                 cmd.Parameters.AddWithValue("@Titulo", nuevoTitulo);
                 cmd.Parameters.AddWithValue("@Contenido", contenidoCifrado);
+                cmd.Parameters.AddWithValue("@Fecha_modificacion", DateTime.Now);
                 cmd.Parameters.AddWithValue("@Nota_ID", notaId);
                 cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
             });
         }
+
     }
 }

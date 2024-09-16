@@ -22,9 +22,8 @@ namespace Tarea1Progra.Paginas
 
             if (usuarioId != -1)
             {
-                // Credenciales correctas
                 Session["Usuario_ID"] = usuarioId;
-                Session["ClaveUsuario"] = contrasena; // La contraseña se usará para derivar la clave
+                Session["ClaveUsuario"] = contrasena;
                 Session["SaltUsuario"] = salt;
                 Response.Redirect("Dashboard.aspx");
             }
