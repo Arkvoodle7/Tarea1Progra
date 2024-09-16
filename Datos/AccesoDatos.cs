@@ -21,6 +21,19 @@ namespace Datos
             conn.Open();
             return cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
         }
+        // Simplificación especial para el metodo de Obtener el Contenido de una nota, para que la conexion no se cierre antes de ejecutar el comando ExecuteScalar
+        private byte[] EjecutarComandoEscalar(string query, Action<SqlCommand> parametros)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                parametros?.Invoke(cmd);
+                conn.Open();
+                byte[] resultado = cmd.ExecuteScalar() as byte[];
+                conn.Close();
+                return resultado;
+            }
+        }
 
         // Método auxiliar para ejecutar comandos sin lector
         private void EjecutarComando(string query, Action<SqlCommand> parametros)
@@ -53,7 +66,9 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@Correo", correo);
                 cmd.Parameters.AddWithValue("@Contrasena", contrasenaHash);
                 cmd.Parameters.AddWithValue("@Salt", salt);
+
             });
+
         }
 
         // Métodos para notas
@@ -69,14 +84,11 @@ namespace Datos
         public byte[] ObtenerContenidoNota(int notaId, int usuarioId)
         {
             string query = "SELECT Contenido FROM Notas WHERE Nota_ID = @Nota_ID AND Usuario_ID = @Usuario_ID";
-            byte[] contenidoCifrado = null;
-            EjecutarComando(query, cmd =>
+            return EjecutarComandoEscalar(query, cmd =>
             {
                 cmd.Parameters.AddWithValue("@Nota_ID", notaId);
                 cmd.Parameters.AddWithValue("@Usuario_ID", usuarioId);
-                contenidoCifrado = cmd.ExecuteScalar() as byte[];
             });
-            return contenidoCifrado;
         }
 
         public void InsertarNota(int usuarioId, string titulo, byte[] contenidoCifrado)
