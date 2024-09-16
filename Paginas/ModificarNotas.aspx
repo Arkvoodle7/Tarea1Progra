@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AgregarNotas.aspx.cs" Inherits="Tarea1Progra.Paginas.AgregarNotas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ModificarNotas.aspx.cs" Inherits="Tarea1Progra.Paginas.EdicionNotas" %>
 
 <!DOCTYPE html>
 
@@ -8,6 +8,7 @@
     <title></title>
 </head>
 <body>
+    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
     <form id="form1" runat="server">
         <div>
         </div>

@@ -1,9 +1,13 @@
 ﻿using System;
-using Negocios;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace Tarea1Progra.Paginas
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Login1 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -12,31 +16,12 @@ namespace Tarea1Progra.Paginas
 
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            string correo = txtCorreo.Text.Trim();
-            string contrasena = txtContrasena.Text.Trim();
 
-            NegociosUsuario negociosUsuario = new NegociosUsuario();
-            byte[] salt;
-
-            int usuarioId = negociosUsuario.IniciarSesion(correo, contrasena, out salt);
-
-            if (usuarioId != -1)
-            {
-                // Credenciales correctas
-                Session["Usuario_ID"] = usuarioId;
-                Session["ClaveUsuario"] = contrasena; // La contraseña se usará para derivar la clave
-                Session["SaltUsuario"] = salt;
-                Response.Redirect("Dashboard.aspx");
-            }
-            else
-            {
-                lblMensaje.Text = "Usuario y/o contraseña incorrectos.";
-            }
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("RegistroUsuarios.aspx");
+
         }
     }
 }

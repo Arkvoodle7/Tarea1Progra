@@ -11,7 +11,7 @@ namespace Tarea1Progra.Paginas
 {
 
 
-    public partial class RegistroUsuarios
+    public partial class RegistroUsuarios1
     {
 
         /// <summary>
@@ -24,49 +24,49 @@ namespace Tarea1Progra.Paginas
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control RegistroPanel.
+        /// Control LoginPanel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel RegistroPanel;
+        protected global::System.Web.UI.WebControls.Panel LoginPanel;
 
         /// <summary>
-        /// Control lblCorreo.
+        /// Control lblUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCorreo;
+        protected global::System.Web.UI.WebControls.Label lblUsuario;
 
         /// <summary>
-        /// Control txtCorreo.
+        /// Control txtUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCorreo;
+        protected global::System.Web.UI.WebControls.TextBox txtUsuario;
 
         /// <summary>
-        /// Control lblContrasena.
+        /// Control lblContraseña.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContrasena;
+        protected global::System.Web.UI.WebControls.Label lblContraseña;
 
         /// <summary>
-        /// Control txtContrasena.
+        /// Control txtContraseña.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContrasena;
+        protected global::System.Web.UI.WebControls.TextBox txtContraseña;
 
         /// <summary>
         /// Control btnRegistrar.
@@ -78,48 +78,12 @@ namespace Tarea1Progra.Paginas
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
 
         /// <summary>
-        /// Control btnRegresar.
+        /// Control btnIniciarSesion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegresar;
-
-        /// <summary>
-        /// Control lblMensaje.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensaje;
-
-        /// <summary>
-        /// Control pnlMensaje.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlMensaje;
-
-        /// <summary>
-        /// Control lblMensajeModal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensajeModal;
-
-        /// <summary>
-        /// Control btnOk.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOk;
+        protected global::System.Web.UI.WebControls.Button btnIniciarSesion;
     }
 }
