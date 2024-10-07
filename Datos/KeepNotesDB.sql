@@ -1,0 +1,25 @@
+CREATE DATABASE KeepNotesDB;
+GO
+
+USE KeepNotesDB;
+GO
+
+CREATE TABLE Usuarios (
+    Usuario_ID INT PRIMARY KEY IDENTITY(1,1),
+    Correo NVARCHAR(255) UNIQUE NOT NULL,
+    Contrasena VARBINARY(MAX) NOT NULL,
+    Fecha_registro DATETIME DEFAULT GETDATE(),
+    Salt VARBINARY(16)
+);
+GO
+
+CREATE TABLE Notas (
+    Nota_ID INT PRIMARY KEY IDENTITY(1,1),
+    Usuario_ID INT NOT NULL,
+    Titulo NVARCHAR(255) NOT NULL,
+    Contenido VARBINARY(MAX) NOT NULL,
+    Fecha_creacion DATETIME DEFAULT GETDATE(),
+    Fecha_modificacion DATETIME NULL,
+    FOREIGN KEY (Usuario_ID) REFERENCES Usuarios(Usuario_ID)
+);
+GO
